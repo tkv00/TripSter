@@ -1,3 +1,12 @@
+
+
+.start { 
+  opacity: 0;
+}
+.end {
+  opacity: 1;
+  transition: opacity 1.5s;
+}
 .App {
   text-align: center;
 }
@@ -13,26 +22,118 @@
   }
 }
 
+
+/* App-header에 배경 이미지 추가 및 하단 흐림 효과 */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-image: url('./img/Header_img.png'); /* 이미지 경로 지정 */
+  height: 500px; /* 필요에 따라 조정 */
+  background-size: cover;
+  background-position: center;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0));
 }
 
-.App-link {
-  color: #61dafb;
+
+.header-Nav{
+  background-color: transparent;
+  align-items: end;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-link-spacing {
+  margin-right: 20px; /* 오른쪽 마진으로 간격 조절 */
+}
+
+/* 마지막 네비게이션 링크의 마진 제거 */
+.nav-link-spacing:last-child {
+  margin-right: 0;
+}
+
+/* 네비게이션 링크 호버 스타일 */
+.nav-link-spacing:hover {
+  text-decoration: underline; /* 호버 시 밑줄 추가 */
+  text-decoration-color: white; /* 밑줄 색상 지정 */
+}
+.linkItem {
+  color: inherit; /* 링크 색상을 부모 요소로부터 상속받습니다. */
+  text-decoration: none; /* 기본 상태에서 밑줄을 제거합니다. */
+}
+
+.linkItem:hover {
+  text-decoration: underline; /* 마우스를 올렸을 때 밑줄을 추가합니다. */
+}
+.topMenu {
+  width: 32.6115vw;
+  height: 1.6661vw;
+  left: 59.5313vw;
+  top: 3.5583vw;
+  z-index: 10;
+  position: absolute;
+}
+
+.menuItem {
+  position: absolute;
+  text-align: center;
+  color: #3B3B3B;
+  font-size: 1.3021vw;
+  font-family: 'Pretendard';
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+.menuItemHome {
+  width: 4.0260vw;
+  height: 1.6661vw;
+  left: 0;
+  top: 0;
+}
+
+.menuItemStartPlanning {
+  width: 11.5229vw;
+  height: 1.6661vw;
+  left: 6.8906vw;
+  top: 0;
+}
+
+.menuItemLogin {
+  width: 3.6094vw;
+  height: 1.6661vw;
+  left: 21.2781vw;
+  top: 0;
+}
+
+.menuItemSignUp {
+  width: 4.8589vw;
+  height: 1.6661vw;
+  left: 27.7526vw;
+  top: 0;
+}
+
+.logo {
+  left: 7.5000vw;
+  top: 2.7083vw;
+  
+  position: absolute;
+  color: #3B3B3B;
+  font-size: 2.6042vw;
+  font-family: 'Pretendard';
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+/* App.css에 추가 */
+.entering {
+  opacity: 0;
+}
+.entered {
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
+}
+.exiting {
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
+}
+.exited {
+  opacity: 0;
+}
+.menuItemHome.mainPage, .menuItemStartPlanning.mainPage, .menuItemLogin.mainPage, .menuItemSignUp.mainPage {
+  color: white; /* 밝은 회색으로 변경 */
 }
