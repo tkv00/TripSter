@@ -15,7 +15,6 @@ function LoginPage() {
   return (
     <div className="loginPageContainer">
       <NavBar />
-      <div className="logo">LOGO</div>
       <div className="mainContent">
         <div className="contentBox"></div>
         <div className="specialTripText">Make your trip special</div>

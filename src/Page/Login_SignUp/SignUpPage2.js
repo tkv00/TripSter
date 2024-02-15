@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import "./LoginSignUp.css";
 import { useNavigate } from "react-router-dom";
 
-function SignUpPage() {
-  let navigate=useNavigate();
+function SignUpPage2() {
+  let navigate = useNavigate();
 
   //다음 버튼 클릭시
-  let handleNext=()=>{
+  let handleNext = () => {
     navigate("/signup3");
-  }
+  };
   const [allChecked, setAllChecked] = useState(false);
   const [termsChecked, setTermsChecked] = useState([
     false,
@@ -40,7 +40,6 @@ function SignUpPage() {
 
   return (
     <div className="loginPageContainer">
-      <div className="logo">LOGO</div>
       <div className="title">약관동의</div>
       <div className="rectangle">
         <input
@@ -90,7 +89,7 @@ function SignUpPage() {
         onClick={() => handleNext()}
         style={{
           backgroundColor: isNextButtonEnabled ? "#275EFE" : "#C2C2C2",
-          marginTop:"780px"
+          marginTop: "780px",
         }}
       >
         다음
@@ -134,4 +133,4 @@ function Text({ index, checked, onCheck }) {
   );
 }
 
-export default SignUpPage;
+export default SignUpPage2;

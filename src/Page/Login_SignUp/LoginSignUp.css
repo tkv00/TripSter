@@ -267,4 +267,45 @@
 #c1:focus,#c2:focus {
   box-shadow: 0 0 0 var(--focus);
 }
+.infoContainer{
+  align-items: center;
+  margin-top: 300px; /* Center vertically */
+  overflow: visible;
+}
 
+.text3{
+  color: black;
+  text-align: left;
+  padding: 10px;
+  font-size: 22px;
+  font-family: 'Pretendard';
+  font-weight: 600;
+
+}
+
+.inputText{
+  width: 616px;
+  margin-bottom: 1px;
+  height: 60px;
+  background-color: white;
+  border-radius: 20px;
+  padding-inline-start: 20px;
+  border: 1px #c2c2c2 solid;
+
+}
+.inputText2{
+  width: 407px;
+  height: 60px;
+  background-color: white;
+  border-radius: 20px;
+  padding-inline-start: 20px;
+  border: 1px #c2c2c2 solid;
+}
+.emailDomainSelect{
+  width: 197px;
+  height: 60px;
+  margin-left: 12px;
+  border: 1px #c2c2c2 solid;
+  border-radius: 20px;
+  color: #c2c2c2;
+}

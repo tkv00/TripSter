@@ -7,12 +7,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SignUpPage2 from "./Page/Login_SignUp/SignUpPage2.js";
 import SignUpPage1 from "./Page/Login_SignUp/SignUpPage1.js";
 import { AnimatePresence } from "framer-motion";
+import "./Page/Login_SignUp/LoginSignUp.css";
 import SignUpPage3 from "./Page/Login_SignUp/SignUpPage3.js";
 function App() {
   return (
     
   
         <div className="App">
+          <div className="logo">LOGO</div>
           <NavBar /> {/* NavBar를 여기에 배치합니다. */}
           <Routes>
             <Route
