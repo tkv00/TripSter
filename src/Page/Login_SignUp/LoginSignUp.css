@@ -1,114 +1,127 @@
+
 .loginPageContainer {
   width: 100%;
   height: auto;
   align-items: center;
   justify-content: center;
+  overflow: visible;
   flex-direction: column;
   display: flex; /* Updated from 'position: flex' to 'display: flex' */
   background: white;
+  align-items: center;
 }
 
 .mainContent {
-  width: 42.2396vw;
-  height: 31.4583vw;
-  left: 28.9063vw;
-  top: 13.8542vw;
+  width: 811px;
+  height: 604px;
+  top: 200px;
+  flex-direction: column; /* 내부 요소를 세로로 정렬 */
+  align-items: center; /* 가로축 중앙 정렬 */
+  justify-content: center; /* 세로축 중앙 정렬 */
+
+  display: flex;
+  overflow: visible;
   position: absolute;
+  align-items: center;
 }
 
 .contentBox {
-  width: 42.2396vw;
-  height: 31.4583vw;
+  width: 811px;
+  height: 604px;
   position: absolute;
   background: white;
-  border-radius: 1.5625vw;
-  border: 0.1042vw #c2c2c2 solid;
+  border-radius: 30px;
+  border: 2px #c2c2c2 solid;
 }
 
 .specialTripText {
-  width: 29.7917vw;
-  height: 2.8646vw;
-  left: 6.25vw;
-  top: 4.2708vw;
+  width: 572px;
+  height: 55px;
+  left: 120px;
+  top: 82px;
   position: absolute;
   text-align: center;
   color: #0038ff;
-  font-size: 2.1875vw;
+  font-size: 42px;
   font-family: "Unbounded";
   font-weight: 400;
   word-wrap: break-word;
 }
 
 .signupPrompt {
-  left: 10.5729vw;
-  top: 8.2292vw;
+  left: 203px;
+  top: 158px;
   position: absolute;
   text-align: center;
   color: #3b3b3b;
-  font-size: 0.9375vw;
+  font-size: 18px;
   font-family: "Pretendard";
   font-weight: 400;
   word-wrap: break-word;
 }
 
 .orText {
-  left: 20.2083vw;
-  top: 17.4479vw;
+  left: 388px;
+  top: 335px;
   position: absolute;
   text-align: center;
   color: #3b3b3b;
-  font-size: 1.0417vw;
+  font-size: 20px;
   font-family: "Pretendard";
   font-weight: 400;
   word-wrap: break-word;
 }
 
 .authButton {
-  width: 33.7661vw;
-  height: 3.9203vw;
+  width: 616px;
+  height: 75px;
   position: absolute;
-  border-radius: 1.0417vw;
+  border-radius: 20px;
+  border: none;
 }
 
 .authButtonKakao {
-  left: 4.2365vw;
-  top: 19.6495vw;
+  left: 81px;
+  top: 377px;
   background: #fde105;
 }
 
-.authButtonGoogle {
-  left: 4.2365vw;
-  top: 24.5818vw;
-  background: white;
-  border: 0.0521vw #828282 solid;
+.authButtonNaver {
+  left: 81px;
+  top: 472px;
+  background: #03c75a;
 }
 
 .authButtonEmail {
-  left: 4.2365vw;
-  top: 12.5042vw;
+  left: 81px;
+  top: 240px;
   background: #0038ff;
 }
 
 .divider {
-  width: 14.6354vw;
+  width: 281px;
   height: 0;
-  border: 0.1042vw #c2c2c2 solid;
+  border: 2px #c2c2c2 solid;
 }
 
 .dividerLeft {
-  left: 4.2188vw;
-  top: 18.0729vw;
+  left: 81px;
+  top: 347px;
   position: absolute;
 }
 
 .dividerRight {
-  left: 23.3854vw;
-  top: 18.0729vw;
+  left: 449px;
+  top: 347px;
   position: absolute;
 }
-
-
-
+.Container {
+  align-items: center;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  position: absolute;
+  overflow: visible;
+}
 .rectangle {
   box-sizing: border-box;
   align-items: center;
@@ -125,12 +138,11 @@
   position: absolute;
   overflow: visible;
 }
-.title{
+.title {
   font-size: 39px;
   font-weight: 600;
-  margin-top:-400px;
-  position: absolute;
-
+  justify-content: center;
+  margin-top: 150px;
 }
 .termsAndButtonContainer {
   display: flex;
@@ -145,13 +157,12 @@
   gap: 80px; /* 약관 박스와 버튼 사이의 간격 */
 }
 
-
 .btn_next {
   width: 616px;
   height: 71px;
-  background-color: #C2C2C2;
+  background-color: #c2c2c2;
   font-size: 23px;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 600;
   margin-top: 700px; /* 필요한 경우 여기서 간격 조정 */
   color: white;
@@ -159,26 +170,27 @@
   border-radius: 20px;
   border: none;
 }
-.title1{
+.title1 {
   font-size: 30px;
   font-weight: 600;
   margin-right: 200px;
   margin-top: 30px;
 }
-.title2{
-  font-size:23px ;
+.title2 {
+  font-size: 23px;
   font-weight: 600;
-  
 }
-#c1 ,#c2{
-  --active: #275EFE;
+#c1,
+#c2,
+#c3 {
+  --active: #275efe;
   --active-inner: #fff;
-  --focus: 2px rgba(39, 94, 254, .3);
-  --border: #BBC1E1;
-  --border-hover: #275EFE;
+  --focus: 2px rgba(39, 94, 254, 0.3);
+  --border: #bbc1e1;
+  --border-hover: #275efe;
   --background: #fff;
-  --disabled: #F6F8FF;
-  --disabled-inner: #E1E6F9;
+  --disabled: #f6f8ff;
+  --disabled-inner: #e1e6f9;
   -webkit-appearance: none;
   -moz-appearance: none;
   outline: none;
@@ -189,27 +201,35 @@
   cursor: pointer;
   border: 1px solid var(--bc, var(--border));
   background: var(--b, var(--background));
-  transition: background .3s, border-color .3s, box-shadow .2s;
-    border-radius: 50%;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
 }
-#c1{
+#c1 {
   height: 30px;
-  width:30px;
+  width: 30px;
+  border-radius: 50%;
 }
-#c2{
+#c2 {
   height: 22px;
-  width:22px;
+  width: 22px;
+  border-radius: 50%;
+}
+#c3 {
+  height: 20px;
+  width: 20px;
+  border-radius: 20%;
 }
 
-#c1:after ,#c2:after {
-  content: '';
+#c1:after,
+#c2:after,
+#c3::after {
+  content: "";
   display: block;
   position: absolute;
   transform: rotate(20deg);
-  transition: transform .3s ease, opacity .2s;
+  transition: transform 0.3s ease, opacity 0.2s;
   opacity: 0;
 }
-#c1:after{
+#c1:after {
   width: 10px;
   height: 14px;
   border: 3px solid var(--active-inner);
@@ -225,65 +245,84 @@
   border-top: 0;
   border-left: 0;
   left: 7px;
-  top:3px;
+  top: 3px;
+}
+#c3:after {
+  width: 7px;
+  height: 10px;
+  border: 2px solid var(--active-inner);
+  border-top: 0;
+  border-left: 0;
+  left: 5.5px;
+  top: 3.5px;
 }
 
-.small_text{
+.small_text {
   font-size: 19px;
   font-weight: 400;
-  color:#828282;
+  color: #828282;
   padding: 5px;
-  
 }
 
-#c1:checked,#c2:checked {
+#c1:checked,
+#c2:checked,
+#c3:checked {
   --b: var(--active);
   --bc: var(--active);
-  --d-o: .3s;
-  --d-t: .6s;
-  --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+  --d-o: 0.3s;
+  --d-t: 0.6s;
+  --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
 }
 
-#c1:checked:after ,#c2:checked:after{
+#c1:checked:after,
+#c2:checked:after,
+#c3:checked:after {
   opacity: 1;
   transform: rotate(43deg);
 }
 
-#c1:disabled,#c2:disabled {
+#c1:disabled,
+#c2:disabled,
+#c3:disabled {
   --b: var(--disabled);
   cursor: not-allowed;
-  opacity: .9;
+  opacity: 0.9;
 }
 
-#c1:disabled:checked,#c2:disabled:checked {
+#c1:disabled:checked,
+#c2:disabled:checked,
+#c3:disabled:checked {
   --b: var(--disabled-inner);
   --bc: var(--border);
 }
 
-#c1:hover:not(:checked):not(:disabled),#c2:hover:not(:checked):not(:disabled) {
+#c1:hover:not(:checked):not(:disabled),
+#c2:hover:not(:checked):not(:disabled),
+#c3:hover:not(:checked):not(:disabled) {
   --bc: var(--border-hover);
 }
 
-#c1:focus,#c2:focus {
+#c1:focus,
+#c2:focus,
+#c3:focus {
   box-shadow: 0 0 0 var(--focus);
 }
-.infoContainer{
+.infoContainer {
   align-items: center;
-  margin-top: 300px; /* Center vertically */
+  margin-top: 30px; /* Center vertically */
   overflow: visible;
 }
 
-.text3{
+.text3 {
   color: black;
   text-align: left;
-  padding: 10px;
+  padding: 5px;
   font-size: 22px;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-weight: 600;
-
 }
 
-.inputText{
+.inputText {
   width: 616px;
   margin-bottom: 1px;
   height: 60px;
@@ -291,9 +330,12 @@
   border-radius: 20px;
   padding-inline-start: 20px;
   border: 1px #c2c2c2 solid;
-
 }
-.inputText2{
+.inputText:hover {
+  border: 1px #275efe solid;
+}
+
+.inputText2 {
   width: 407px;
   height: 60px;
   background-color: white;
@@ -301,11 +343,87 @@
   padding-inline-start: 20px;
   border: 1px #c2c2c2 solid;
 }
-.emailDomainSelect{
+.inputText2:hover {
+  border: 1px #275efe solid;
+}
+.emailDomainSelect {
   width: 197px;
   height: 60px;
   margin-left: 12px;
   border: 1px #c2c2c2 solid;
   border-radius: 20px;
   color: #c2c2c2;
+}
+.emailDomainSelect:hover {
+  border: 1px #275efe solid;
+}
+.errorMessage {
+  color: #c2c2c2;
+  text-align: left;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+.inputError {
+  border: 2px red solid;
+  /* 입력 필드 에러 시 테두리 색상 */
+  background-color: #ffcccc; /* 입력 필드 에러 시 배경 색상 */
+}
+.inputSuccess {
+  border: 2px solid #007bff; /* 파란색 테두리 */
+  background-color: #cce5ff; /* 연한 파란색 배경 */
+}
+
+.Logincontent {
+  display: flex;
+  align-items: center; /* 체크박스와 텍스트를 수직 중앙 정렬 */
+  cursor: pointer; /* 마우스 오버 시 포인터 모양 변경 */
+  margin-right: 12px; /* 체크박스와 텍스트 사이의 간격 조정 */
+  margin: 15px;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+}
+
+.LoginBox {
+  left: 0px;
+  position: relative;
+  font-size: 23px;
+  font-weight: 600;
+  text-align: center;
+  font-family: Pretendard;
+}
+.LoginBtn {
+  
+  height: 34px;
+  width: 36px;
+  position: relative;
+  bottom: 19px;
+  margin-block-start: 38px;
+  right: 190px;
+}
+.vertical {
+  transform: rotate(180deg);
+  transform-origin: 1 0;
+  border: 1px #c2c2c2 solid;
+  height: 28px;
+  width: 1px;
+}
+.findText {
+  color: #828282;
+  font-family: Pretendard;
+  font-weight: 400;
+  word-wrap: break-word;
+  font-size: 18px;
+  cursor: pointer;
+}
+.findOptionsContainer {
+  display: flex; /* Flexbox 사용 설정 */
+  width: 60%; /* 부모 컨테이너의 전체 너비를 400px로 설정 */
+  justify-content: space-around; /* 내부 아이템을 가로축으로 균등하게 분배 */
+  align-items: center; /* 세로축 중앙 정렬 */
+  margin-top: 70px; /* 상단 여백을 100px로 설정 */
+  margin-bottom: 10px; /* 하단 여백을 10px로 설정 */
+  margin-left: 110px;
 }

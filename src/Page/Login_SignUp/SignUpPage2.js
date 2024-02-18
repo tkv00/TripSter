@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import "./LoginSignUp.css";
 import { useNavigate } from "react-router-dom";
-
+import Wrapper from "../../component/Wrapper";
+import TermsOfService from "../../component/TermsOfService";
 function SignUpPage2() {
   let navigate = useNavigate();
-
+  //이용약관 모달박스
+  const [modalOpen, setModalOpen] = useState(false);
+  const [currentTermId, setCurrentTermId] = useState('');
+  const showTerms = (termId) => {
+    setCurrentTermId(termId);
+    setModalOpen(true);
+  };
+  let modeName=['termsOfService','privacyPolicy','locationServices','additionalPrivacy'];
   //다음 버튼 클릭시
   let handleNext = () => {
     navigate("/signup3");
@@ -39,71 +47,78 @@ function SignUpPage2() {
   const isNextButtonEnabled = termsChecked.slice(0, 2).every(Boolean);
 
   return (
-    <div className="loginPageContainer">
-      <div className="title">약관동의</div>
-      <div className="rectangle">
-        <input
-          id="c1"
-          type="checkbox"
-          name="All_check"
-          checked={allChecked}
-          onChange={handleAllCheck}
-          style={{ position: "absolute", left: "83px", top: "38px" }}
-        />
-        <label htmlFor="c1" className="title1">
-          약관 전체 동의
-        </label>
-        <div
-          className="title2"
-          style={{ paddingRight: "310px", paddingTop: "50px" }}
-        >
-          필수 동의 항목
-        </div>
-        {[0, 1].map((index) => (
-          <Text
-            key={index}
-            index={index}
-            checked={termsChecked[index]}
-            onCheck={() => handleCheck(index)}
-          />
-        ))}
-        <div
-          className="title2"
-          style={{ paddingRight: "310px", paddingTop: "50px" }}
-        >
-          선택 동의 항목
-        </div>
-        {[2, 3].map((index) => (
-          <Text
-            key={index}
-            index={index}
-            checked={termsChecked[index]}
-            onCheck={() => handleCheck(index)}
-          />
-        ))}
-      </div>
+    <Wrapper>
+      <div className="loginPageContainer">
+        <div>
+          <div className="title">약관동의</div>
+          <div className="rectangle">
+            <input
+              id="c1"
+              type="checkbox"
+              name="All_check"
+              checked={allChecked}
+              onChange={handleAllCheck}
+              style={{ position: "absolute", left: "83px", top: "38px" }}
+            />
+            <label htmlFor="c1" className="title1">
+              약관 전체 동의
+            </label>
+            <div
+              className="title2"
+              style={{ paddingRight: "310px", paddingTop: "50px" }}
+            >
+              필수 동의 항목
+            </div>
+            {[0, 1].map((index) => (
+              <Text
+                key={index}
+                index={index}
+                checked={termsChecked[index]}
+                onCheck={() => handleCheck(index)}
+                onClick={() => showTerms(modeName[index])}
+              />
+            ))}
+            <div
+              className="title2"
+              style={{ paddingRight: "310px", paddingTop: "50px" }}
+            >
+              선택 동의 항목
+            </div>
+            {[2, 3].map((index) => (
+              <Text
+                key={index}
+                index={index}
+                checked={termsChecked[index]}
+                onCheck={() => handleCheck(index)}
+                onClick={() => showTerms(modeName[index])} 
+              />
+            ))}
+          </div>
+          <TermsOfService isOpen={modalOpen} termId={currentTermId} onClose={() => setModalOpen(false)} />
 
-      <button
-        className="btn_next"
-        disabled={!isNextButtonEnabled}
-        onClick={() => handleNext()}
-        style={{
-          backgroundColor: isNextButtonEnabled ? "#275EFE" : "#C2C2C2",
-          marginTop: "780px",
-        }}
-      >
-        다음
-      </button>
-    </div>
+          <button
+            className="btn_next"
+            disabled={!isNextButtonEnabled}
+            onClick={() => handleNext()}
+            style={{
+              backgroundColor: isNextButtonEnabled ? "#275EFE" : "#C2C2C2",
+              marginTop: "580px",
+            }}
+          >
+            다음
+          </button>
+        </div>
+      </div>
+    </Wrapper>
   );
 }
 
-function Text({ index, checked, onCheck }) {
+function Text({ index, checked, onCheck,onClick }) {
   let text = [
-    "[필수]이용약관 >",
-    "[필수]개인정보 수집 동의서 >",
-    "[선택]위치기반서비스 이용약관 >",
-    "[선택]개인정보2 >",
+    "[필수]Trapster 이용약관 >",
+    "[필수]개인정보 수집 및 이용에 대한 동의 >",
+    "[선택]위치기반 서비스 이용약관 >",
+    "[선택]마케팅 및 광고 목적을 위한 개인정보 처리 동의서 >",
   ];
 
   return (
@@ -126,6 +141,7 @@ function Text({ index, checked, onCheck }) {
         htmlFor={`c2-${index}`}
         className="small_text"
         style={{ cursor: "pointer" }}
+        onClick={onClick}
       >
         {text[index]}
       </label>
