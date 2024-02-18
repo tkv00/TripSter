@@ -73,7 +73,7 @@ export function NavBar() {
       <Link className={`${linkClass} menuItemHome`} to="/">
         HOME
       </Link>
-
+      
       <Link
         className={`${linkClass} menuItemStartPlanning`}
         to="/start-planning"
