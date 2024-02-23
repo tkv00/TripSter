@@ -40,3 +40,17 @@ width: 24px; /* 이미지 너비 설정, 필요에 따라 조절 */
 height: 24px; /* 이미지 높이 설정, 필요에 따라 조절 */
 }
 
+/* 메인 헤더 이미지 슬라이드 (중앙이미지 / 중앙말고 사이드 쪽이미지)*/
+
+.imgContainer_main{
+  width: 770px;
+  height: 530px;
+  border-radius: 276px;
+}
+.imgContainer_sub{
+  width: 405px;
+  height: 586px;
+  border-radius: 202px;
+  filter: blur(20px);
+
+}

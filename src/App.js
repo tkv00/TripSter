@@ -1,5 +1,6 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
+import "./component/Slider.js";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom"; // Router 추가
 import TextInput from "./component/TextInput.js";
@@ -11,7 +12,35 @@ import "./Page/Login_SignUp/LoginSignUp.css";
 import Wrapper from "./component/Wrapper.js";
 import LoginPage from "./Page/Login_SignUp/LoginPage.js";
 import SignUpPage3 from "./Page/Login_SignUp/SignUpPage3.js";
+import Slider from "./component/Slider.js";
+import place0 from "./img/place0.jpeg";
+import place1 from "./img/place1.jpeg";
+import place2 from "./img/place2.jpg";
+import place3 from "./img/place3.jpeg";
+import Banner from "./component/Banner.js";
 function App() {
+  const slideData = [
+    {
+      index: 0,
+      headline: "SEOUL",
+      src: place0,
+    },
+    {
+      index: 1,
+      headline: "BUSAN",
+      src: place1,
+    },
+    {
+      index: 2,
+      headline: "JEJU",
+      src: place2,
+    },
+    {
+      index: 3,
+      headline: "DEAGU",
+      src:place3,
+    },
+  ];
   return (
     <div className="App">
       <AnimatePresence>
@@ -23,8 +52,13 @@ function App() {
               path="/"
               element={
                 <div>
-                  <div className="App-header">
+                  <div className="App-header" style={{justifyContent:"center",alignContent:"center",alignItems:"center"}}>
                     <TextInput />
+                    <Slider  heading="Example Slider"  slides={slideData}  />
+                    <Banner/>
+                    <br/>
+                    <br/>
+                    <br/>
                   </div>
                 </div>
               }
@@ -44,9 +78,6 @@ export function NavBar() {
   const location = useLocation(); // 현재 위치 추적
   const [isScrolled, setIsScrolled] = useState(false);
   const isMainPage = location.pathname === "/"; // 메인 페이지 여부 확인
-
-
-
   useEffect(() => {
     const handleScroll = () => {
       // 스크롤 위치에 따라 isScrolled 상태 업데이트
@@ -66,14 +97,16 @@ export function NavBar() {
   }, []);
   // 스크롤 상태 및 현재 페이지에 따른 클래스 이름 결정
   const topMenuClass = `topMenu ${isScrolled ? "scrolled" : ""}`;
-  const linkClass = `menuItem linkItem${isMainPage ? " mainPage" : ""}${isScrolled ? " scrolled" : ""}`;
+  const linkClass = `menuItem linkItem${isMainPage ? " mainPage" : ""}${
+    isScrolled ? " scrolled" : ""
+  }`;
 
   return (
     <div className={topMenuClass}>
       <Link className={`${linkClass} menuItemHome`} to="/">
         HOME
       </Link>
-      
+
       <Link
         className={`${linkClass} menuItemStartPlanning`}
         to="/start-planning"

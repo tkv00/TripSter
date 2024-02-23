@@ -1,9 +1,10 @@
 {
-  "homepage": "http://tkv00.github.io/Trapster",
+  "homepage": "http://tkv00.github.io/",
   "name": "project-travel",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^5.3.0",
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@svgr/webpack": "^5.5.0",
@@ -149,7 +150,6 @@
       "react-app"
     ]
   },
-  
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-private-property-in-object": "^7.23.4"

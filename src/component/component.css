@@ -1,26 +1,123 @@
+
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* 뒷배경을 불투명하게 설정 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 200;
-    text-align: left;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* 뒷배경을 불투명하게 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  text-align: left;
+}
 
 .modalContent {
   width: 800px;
-
   background-color: white;
-
   max-height: 80%; /* 최대 높이 설정 */
   padding: 20px;
   overflow-y: auto; /* 내용이 초과할 경우 스크롤바 표시 */
   border-radius: 15px;
   border: 2px #c2c2c2 solid;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 모달에 그림자 효과 추가 */
+}
+.banner-container {
+
+  background-color: white;
+
+  width: 89.5833vw;
+  height: 31.3542vw;
+  border-radius: 30px;
+
+  /* 배너 내부 가로 중앙 정렬 */
+  /* 배너 내부 세로 중앙 정렬 */
+  box-shadow: 0px 0px 28.700000762939453px -5px #d9d9d9;
+}
+.banner-text {
+  font-size:3.3333vw;
+  font-family: "Unbounded", sans-serif;
+  text-align: left;
+}
+@media (max-width: 768px) {
+  .banner-text {
+    font-size: 1.9722vw; /* 작은 화면에서 폰트 크기 조절 */
+  }
+}
+
+button {
+
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* 전환 효과 추가 */
+}
+.banner-btn_on,.banner-btn_off {
+  text-align: center;
+  align-items: center;
+  color: white;
+  background-color: #0038ff;
+  border-radius: 50px;
+  width: 7.7083vw;
+  height: 3.8194vw;
+  border: none;
+}
+.banner-btn_on {
+  color: white;
+  background-color: #0038ff;
+}
+.banner-btn_off{
+  color: #0038ff;
+  background-color: #EDEDED;
+}
+.banner-buttons{
+  display: flex;
+  margin-top: -20px;
+  margin-left: 30px;
+   /* 버튼들을 중앙 정렬 */
+  gap: 0.6944vw; /* 버튼 사이의 간격 */
+  
+}
+.imgContainer{
+  padding: 1vw;
+  display: flex;
+  border: none;
+  gap: 1.3889vw; /* 아이템 간 간격을 gap으로 조정 */
+  margin: 1.3889vw ; /* 상단과 하단에 마진을 추가하여 조금 더 여유를 줍니다 */
+}
+.img-item img {
+  width: 100%; /* 이미지의 너비를 부모 요소에 맞춤 */
+  height: 90%; /* 이미지의 높이를 자동으로 조절하여 비율을 유지 */
+}
+
+.img-item {
+  flex: 1; /* 각 이미지 아이템이 동일한 비율로 공간을 차지하도록 설정 */
+  margin: 0 10px; /* 각 이미지 아이템 사이의 간격을 설정 */
+  position: relative;
+}
+
+.img-text {
+  /* 좌측에서 50% 위치 */
+  transform: translate(-20%, -140%); /* 정확히 중앙에 위치하도록 조정 */
+  color: white; /* 텍스트 색상 */
+  font-size: 1.7188vw; /* 텍스트 크기 */
+  z-index: 20; /* 이미지 위에 오도록 z-index 설정 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.heart-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 15px;
+  z-index: 40;
+  
+  font-size: 35px;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+.heart-icon:active {
+  transform: scale(1.5); /* 클릭 시 아이콘 확대 */
+}
+.heart-icon:hover {
+  transform: scale(1.2); /* 마우스 호버 시 약간 확대 */
 }
