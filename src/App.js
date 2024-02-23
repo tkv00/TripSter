@@ -45,6 +45,7 @@ function App() {
     <div className="App">
       <AnimatePresence>
         <div className="logo">LOGO</div>
+        {/* 상단 바 서버통신X */}
         <NavBar />
         <Wrapper>
           <Routes>
@@ -53,8 +54,11 @@ function App() {
               element={
                 <div>
                   <div className="App-header" style={{justifyContent:"center",alignContent:"center",alignItems:"center"}}>
+                    {/* 홈페이지 전체 검색 */}
                     <TextInput />
+                     {/* 이미지 슬라이더 (서버통신x) */}
                     <Slider  heading="Example Slider"  slides={slideData}  />
+                    {/* component파일 -> Banner파일  이미지 4개를 가져오는데 공공데이터를 이용해서 이미지4개+장소명4개 통신 */}
                     <Banner/>
                     <br/>
                     <br/>
@@ -62,6 +66,7 @@ function App() {
                   </div>
                 </div>
               }
+              // 다른페이지 이동 로직 (서버X)
             ></Route>
             <Route path="/signup1" element={<SignUpPage1 />}></Route>
             <Route path="/signup2" element={<SignUpPage2 />}></Route>
@@ -73,7 +78,7 @@ function App() {
     </div>
   );
 }
-
+//서버 통신X
 export function NavBar() {
   const location = useLocation(); // 현재 위치 추적
   const [isScrolled, setIsScrolled] = useState(false);

@@ -164,6 +164,7 @@ function SignUpInput() {
       <form onSubmit={handleSubmit}>
         {/* 아이디 필드 */}
         <div className="text3">아이디</div>
+        {/* 아이디입력받는 inputtext */}
         <input
           type="text"
           name="id"
@@ -174,6 +175,7 @@ function SignUpInput() {
           }`}
           placeholder="6-12자 영문, 숫자 조합"
         />
+        {/* 아이디 중복확인하는 버튼 */}
         <button
           className="emailDomainSelect"
           style={{
@@ -193,6 +195,7 @@ function SignUpInput() {
 
         {/* 비밀번호 필드 */}
         <div className="text3">비밀번호</div>
+        {/* 비밀번호 입력 상자 */}
         <input
           type="password"
           name="password"
@@ -210,6 +213,7 @@ function SignUpInput() {
         {errors.password && <p className="errorMessage">{errors.password}</p>}
 
         {/* 비밀번호 확인 필드 */}
+        {/* 프론트 쪽 로직(서버 통신 필요없음) */}
         <div className="text3">비밀번호 확인</div>
         <input
           type="password"
@@ -231,6 +235,7 @@ function SignUpInput() {
 
         {/* 이름 필드 */}
         <div className="text3">이름</div>
+        {/* 이름 입력상자 */}
         <input
           type="text"
           name="name"
@@ -247,6 +252,7 @@ function SignUpInput() {
         {errors.name && <p className="errorMessage">{errors.name}</p>}
         {/* 이메일 필드 */}
         <div className="text3">이메일</div>
+        {/* 이메일 입력상자 */}
         <input
           type="text"
           name="emailLocalPart"
@@ -260,6 +266,7 @@ function SignUpInput() {
               : ""
           }`}
         />
+        {/* 도메인 선택상자 */}
         <select
           name="emailDomain"
           value={formData.emailDomain}
@@ -276,6 +283,7 @@ function SignUpInput() {
           <option value="@nate.com">@hanmail.net</option>
           <option value="@nate.com">@hotmail.com</option>
         </select>
+        {/* 서버로 이메일 정보 통신 시 email를 보내줘야함 즉, 도메인 주소와 사용자가 입력한 이메일을 합한거 */}
         {errors.email && <p className="errorMessage">{errors.email}</p>}
       </form>
       <button

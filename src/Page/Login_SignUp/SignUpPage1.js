@@ -22,10 +22,13 @@ function SignUpPage1() {
             지금 회원가입 하시고 다양한 여행 서비스를 경험해보세요!
           </div>
           <div className="orText">또는</div>
+          {/* 이메일 가입버튼(회원가입 페이지로 이동 서버X) */}
           <BtnLoginTheme buttonName={1} />
           <div className="divider dividerLeft"></div>
           <div className="divider dividerRight"></div>
+          {/* 카카오 로그인으로 이동 버튼 */}
           <BtnLoginTheme buttonName={2} />
+          {/* 네이버 로그인으로 이동 버튼 */}
           <BtnLoginTheme buttonName={3} />
         </div>
       </div>

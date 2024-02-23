@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Wrapper from "../../component/Wrapper";
 import TermsOfService from "../../component/TermsOfService";
 function SignUpPage2() {
+  // 이 페이지는 서버통신 할 필요없음
   let navigate = useNavigate();
   //이용약관 모달박스
   const [modalOpen, setModalOpen] = useState(false);
