@@ -18,6 +18,9 @@ import place1 from "./img/place1.jpeg";
 import place2 from "./img/place2.jpg";
 import place3 from "./img/place3.jpeg";
 import Banner from "./component/Banner.js";
+import plane from "./img/plane.png";
+import PlaneAnimation from "./component/PlaneAnimation.js";
+import LoginHandler from "./component/LoginHandler.js";
 function App() {
   const slideData = [
     {
@@ -38,7 +41,7 @@ function App() {
     {
       index: 3,
       headline: "DEAGU",
-      src:place3,
+      src: place3,
     },
   ];
   return (
@@ -53,25 +56,31 @@ function App() {
               path="/"
               element={
                 <div>
-                  <div className="App-header" style={{justifyContent:"center",alignContent:"center",alignItems:"center"}}>
-                    {/* 홈페이지 전체 검색 */}
-                    <TextInput />
-                     {/* 이미지 슬라이더 (서버통신x) */}
-                    <Slider  heading="Example Slider"  slides={slideData}  />
-                    {/* component파일 -> Banner파일  이미지 4개를 가져오는데 공공데이터를 이용해서 이미지4개+장소명4개 통신 */}
-                    <Banner/>
-                    <br/>
-                    <br/>
-                    <br/>
+                  <div className="App-header">
+                    
+                    <div className="contain">
+                      {/* 홈페이지 전체 검색 */}
+                      <TextInput />
+                      <PlaneAnimation/>
+                      {/* 이미지 슬라이더 (서버통신x) */}
+                      <Slider heading="Example Slider" slides={slideData} />
+                      {/* component파일 -> Banner파일  이미지 4개를 가져오는데 공공데이터를 이용해서 이미지4개+장소명4개 통신 */}
+                      <Banner />
+                      <br />
+                      <br />
+                      <br />
+                    </div>
                   </div>
                 </div>
               }
               // 다른페이지 이동 로직 (서버X)
             ></Route>
+             <Route path="/login/oauth2/callback/kakao" element={<LoginHandler/>} />
             <Route path="/signup1" element={<SignUpPage1 />}></Route>
             <Route path="/signup2" element={<SignUpPage2 />}></Route>
             <Route path="/signup3" element={<SignUpPage3 />}></Route>
             <Route path="/login" element={<LoginPage />}></Route>
+            <Route path="/loginSuccess" element={<h1>로그인 성공</h1>}></Route>
           </Routes>
         </Wrapper>
       </AnimatePresence>

@@ -1,23 +1,37 @@
 import "./LoginSignUp.css";
 import React, { useState } from "react";
+import { Navigate, useNavigate, Route, Routes } from "react-router-dom";
 import kakaoIcon from "../../img/img2.png";
 import NaverIcon from "../../img/img3.png";
-import { useNavigate } from "react-router-dom";
 import Wrapper from "../../component/Wrapper";
+
 function LoginPage() {
   // 각 페이지들로 이동
   let navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   let list = ["/findId", "/findPassword", "/signup1"];
   let handleNext = (props) => {
     navigate(props);
   };
+
   // 입력 상태를 관리하기 위한 useState 훅
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
-
   // 로그인 버튼 활성화 상태 관리
   const isButtonEnabled = userId.length > 0 && password.length > 0;
+  //카카오 키관리
+  const CLIENT_ID = process.env.REACT_APP_REST_API_KEY;
+  const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URL;
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
+  // 카카오 로그인 처리
+  const handleKakaoLogin = () => {
+    window.location.href = KAKAO_AUTH_URL;
+  };
+
+  if (isLoading) {
+    return <div>로딩 중...</div>;
+  }
   return (
     <Wrapper>
       <div className="loginPageContainer">
@@ -48,7 +62,6 @@ function LoginPage() {
               <div style={{ marginLeft: "10px" }}>아이디 저장</div>
             </label>
           </div>
-
           <button
             className="authButton authButtonKakao LoginBox"
             style={{
@@ -56,6 +69,7 @@ function LoginPage() {
               color: "#391C1C",
               paddingLeft: "50px",
             }}
+            onClick={handleKakaoLogin}
           >
             카카오 로그인
             <img className="LoginBtn" src={kakaoIcon} alt="kakao"></img>

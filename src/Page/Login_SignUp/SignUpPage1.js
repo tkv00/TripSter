@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import emailIcon from "../../img/img1.png"; // 예시 경로, 실제 경로에 맞게 조정 필요
 import kakaoIcon from "../../img/img2.png";
 import NaverIcon from "../../img/img3.png";
+import axios from 'axios'; // Axios import
 // 이미지 매핑 객체
 const icons = {
   Email: emailIcon,
@@ -53,11 +54,24 @@ function BtnLoginTheme({ buttonName }) {
   let altName = ["Email", "Kakao", "Naver"];
   let index = buttonName - 1;
   let icon = icons[altName[index]];
-
+  
+  const handleKakaoLogin = async () => {
+    try {
+      // 백엔드 서버의 카카오 로그인 요청 엔드포인트로 요청을 보냅니다.
+      // 이 URL은 백엔드 구현에 따라 달라집니다.
+      const response = await axios.get("/api/v1/auth/kakao/login");
+      // 백엔드 서버로부터 받은 리디렉션 URL로 사용자를 리디렉션합니다.
+      window.location.href = response.data.redirectUrl;
+    } catch (error) {
+      console.error("카카오 로그인 요청 실패:", error);
+    }
+  };
   const handleClick = () => {
     if (buttonName === 1) {
       // 이메일로 가입하기 버튼일 경우
       navigate("/signup2"); // 회원가입 경로로 이동
+    } else if (buttonName === 2) {
+      handleKakaoLogin(); // 카카오 로그인 버튼일 경우의 처리
     }
   };
 

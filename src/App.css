@@ -26,7 +26,22 @@
   height: 1280px; /* 필요에 따라 조정 */
   background-size: cover;
   background-position: center;
+  justify-content: center;
+  align-content: center;
+  position: relative; /* SVG를 올바르게 위치시키기 위해 */
+}
 
+
+@keyframes moveAlongPath {
+  from { transform: translateX(0%); }
+  to { transform: translateX(100%); }
+}
+
+.moving-image {
+  animation: moveAlongPath 10s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .header-Nav {

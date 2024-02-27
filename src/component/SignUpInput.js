@@ -1,10 +1,14 @@
 import "../Page/Login_SignUp/LoginSignUp.css";
 import "./Header.css";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Navigate, useNavigate,Route,Routes } from "react-router-dom";
 
 function SignUpInput() {
   //아이디 중복체크버튼
   //아이디 상태관리
+  const API_BASE_URL = "https://timer973.mycafe24.com";
+  const navigate = useNavigate(); // useNavigate 훅 사용
   const [userId, setUserId] = useState("");
   const [isIdValid, setIsIdValid] = useState(false);
   const [formData, setFormData] = useState({
@@ -131,32 +135,64 @@ function SignUpInput() {
     Object.values(formData).every((value) => value) &&
     Object.keys(errors).every((key) => !errors[key]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (isFormValid) {
-      const finalEmail = formData.emailLocalPart + "@" + formData.emailDomain;
-
-      alert(
-        `Registration Successful: ${JSON.stringify({
-          ...formData,
-          email: finalEmail,
-        })}`
-      );
-    }
-  };
   // 입력 조건을 충족하는지 확인하는 함수
   const isInputValid = (name) => {
     const value = formData[name];
     const error = errors[name];
     return value && !error;
   };
+  const checkId = async (id) => {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/id-check`, { id });
+      return response.data; // 서버로부터의 응답 처리
+    } catch (error) {
+      console.error("ID Check Error:", error);
+      throw error; // 오류 처리
+    }
+  };
 
-  const checkDuplicateId = async () => {
-    // 여기서 실제 서버 요청을 구현합니다.
-    // 예: const response = await fetch('/api/check-id', { method: 'POST', body: JSON.stringify({ id: userId }) });
-    // 결과에 따라 중복 여부 메시지를 표시합니다.
-    alert("아이디 중복 확인 로직을 서버와 연동하여 구현하세요.");
-    // 예시로 alert을 사용했습니다. 실제로는 상태를 사용하여 중복 여부를 사용자에게 알릴 수 있습니다.
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!isFormValid) {
+      alert("모든 필드를 올바르게 입력해주세요.");
+      return;
+    }
+
+    const finalEmail = `${formData.emailLocalPart}@${formData.emailDomain}`;
+    try {
+      const response = await axios.post(`${API_BASE_URL}/sign-up`, {
+        id: formData.id,
+        password: formData.password,
+        name: formData.name,
+        email: finalEmail,
+      });
+      if (response.data.success) {
+        alert("회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.");
+        navigate("/login"); // 로그인 페이지로 리디렉션
+      } else {
+        alert(response.data.message); // 서버 에러 메시지 출력
+      }
+    } catch (error) {
+      console.error("회원 가입 요청 실패:", error);
+      alert("회원가입 과정에서 오류가 발생했습니다. 다시 시도해주세요.");
+    }
+  };
+
+  const handleCheckDuplicateId = async () => {
+    try {
+      const { id } = formData;
+      const response = await axios.post(`${API_BASE_URL}/id-check`, { id });
+      if (response.data.isDuplicate) {
+        alert("이미 사용 중인 아이디입니다.");
+        setIsIdValid(false); // 중복된 아이디는 유효하지 않음
+      } else {
+        alert("사용 가능한 아이디입니다.");
+        setIsIdValid(true);
+      }
+    } catch (error) {
+      console.error("ID Check Error:", error);
+      alert("아이디 중복 확인 중 오류가 발생했습니다.");
+    }
   };
 
   return (
@@ -186,8 +222,8 @@ function SignUpInput() {
             fontFamily: "Pretendard",
             fontWeight: "600",
           }}
+          onClick={handleCheckDuplicateId}
           disabled={!isIdValid}
-          onClick={checkDuplicateId}
         >
           아이디 중복 확인하기
         </button>
