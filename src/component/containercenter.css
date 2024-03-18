@@ -1,0 +1,58 @@
+.planeContainer {
+  height: 50vw;
+  width: 100%;
+  margin-top: 10%;
+  display: flex;
+  margin-left: 8%;
+}
+.contentWrapper {
+  display: flex;
+  height: 50vw;
+  flex-direction: column; /* 세로 방향으로 요소들을 정렬 */
+}
+
+.planeimg {
+  width: max(36.4583vw, 300px);
+  height: max(36.4583vw, 300px);
+  margin-right: 5%;
+}
+.text {
+  text-align: left;
+  font-size: max(3.3854vw, 10px);
+  font-weight: 600;
+  color: #0038ff;
+}
+.btnMakeBoard {
+  background-color: #0038ff;
+  font-size: max(10px, 1.0417vw);
+  color: white;
+  border: none;
+  width: 18.0208vw;
+  height: 4.3036vw;
+  font-weight: 600;
+  border-radius: 50px;
+  margin-top: 3vw;
+}
+
+.contentText {
+  text-align: left;
+  font-size: max(1.3542vw, 15px);
+  font-weight: 600;
+}
+@media (max-width: 1000px) {
+  .contentText {
+    display: none;
+  }
+  .btnMakeBoard{
+    width: 200px;
+    height: 70px;
+    font-size: 20px;
+  }
+}
+
+.unbounded-font {
+  font-family: "Unbounded", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}

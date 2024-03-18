@@ -23,7 +23,7 @@
 /* App-header에 배경 이미지 추가 및 하단 흐림 효과 */
 .App-header {
   background-image: url("./img/Header_img.png"); /* 이미지 경로 지정 */
-  height: 1280px; /* 필요에 따라 조정 */
+  height: max(66.6667vw,800px); /* 필요에 따라 조정 */
   background-size: cover;
   background-position: center;
   justify-content: center;
