@@ -22,8 +22,13 @@
 
 /* App-header에 배경 이미지 추가 및 하단 흐림 효과 */
 .App-header {
-  background-image: url("./img/Header_img.png"); /* 이미지 경로 지정 */
-  height: max(66.6667vw,800px); /* 필요에 따라 조정 */
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 1) 100%
+    ),
+    url("./img/Header_img.png");
+  height: max(66.6667vw, 800px); /* 필요에 따라 조정 */
   background-size: cover;
   background-position: center;
   justify-content: center;
@@ -31,10 +36,13 @@
   position: relative; /* SVG를 올바르게 위치시키기 위해 */
 }
 
-
 @keyframes moveAlongPath {
-  from { transform: translateX(0%); }
-  to { transform: translateX(100%); }
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
 }
 
 .moving-image {
@@ -75,7 +83,7 @@
   transition: all 0.3s ease;
   width: 100%;
   height: 80px;
-
+  /* 초기 배경색은 투명 */
   display: flex;
   justify-content: flex-end; /* 내부 아이템들을 오른쪽으로 정렬 */
   align-items: center; /* 아이템들을 세로 방향 가운데 정렬 */
@@ -84,13 +92,12 @@
   position: fixed;
 }
 .topMenu.scrolled {
-  background-color: white; /* 배경색을 하얀색으로 변경 */
-  color: black; /* 글자색을 검정색으로 변경 */
+  background-color: white; /* 스크롤 시 배경색 */
+  color: black; /* 글자색 검정 */
+  
 }
 
-.menuItem.linkItem.scrolled {
-  color: black; /* 스크롤 시 글자색을 검정색으로 변경 */
-}
+
 
 .menuItem {
   position: relative;
@@ -100,9 +107,7 @@
   font-family: "Pretendard";
   font-weight: 500;
   padding-left: 4.1667vw;
-  
 }
-
 
 
 .logo {
@@ -137,4 +142,22 @@
 .menuItemLogin.mainPage,
 .menuItemSignUp.mainPage {
   color: white; /* 밝은 회색으로 변경 */
+}
+.hrSvgContainer {
+  display: flex;
+  align-items: center; /* 세로축 중앙 정렬 */
+  justify-content: flex-end;
+}
+
+.hrSvgContainer svg {
+  margin-left: 1vw; /* hr 선과 svg 사이의 간격 조정 */
+}
+.body-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
 }

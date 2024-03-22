@@ -20,9 +20,11 @@ import place3 from "./img/place3.jpeg";
 import Banner from "./component/Banner.js";
 import PlanBoard from "./component/PlanBoard.js";
 import LoginHandler from "./component/LoginHandler.js";
+import PlanBoard2 from "./component/PlanBoard2.js";
+import ContainerBelt from "./component/ContainerBelt.js";
+import PopularTrip from "./component/PopularTrip.js";
+import Footer from "./component/Footer.js";
 function App() {
-
-
   const slideData = [
     {
       index: 0,
@@ -47,75 +49,79 @@ function App() {
   ];
   return (
     <div className="App">
-      
-        <div className="logo">LOGO</div>
-        {/* 상단 바 서버통신X */}
-        <NavBar />
-        <Wrapper>
-          <Routes >
-            <Route
-              path="/"
-              element={
-                <div>
-                  <div className="App-header">
-                    <div className="contain">
-                      {/* 홈페이지 전체 검색 */}
-                      <TextInput />
-                      
-                      {/* 이미지 슬라이더 (서버통신x) */}
-                      <Slider heading="Example Slider" slides={slideData} />
-                       {/* component파일 -> Banner파일  이미지 4개를 가져오는데 공공데이터를 이용해서 이미지4개+장소명4개 통신 */}
-                      <Banner />
-                      <PlanBoard/>
-                      <br />
-                      <br />
-                      <br />
-                    </div>
+      <div className="logo">LOGO</div>
+
+      {/* 상단 바 서버통신X */}
+      <NavBar />
+      <Wrapper>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div>
+                <div className="App-header">
+                  <div className="contain">
+                    {/* 홈페이지 전체 검색 */}
+                    <TextInput />
+
+                    {/* 이미지 슬라이더 (서버통신x) */}
+                    <Slider heading="Example Slider" slides={slideData} />
+                    {/* component파일 -> Banner파일  이미지 4개를 가져오는데 공공데이터를 이용해서 이미지4개+장소명4개 통신 */}
+                    <Banner />
+                    <PlanBoard />
+                    <PlanBoard2 />
+                    <ContainerBelt/>
+                    <PopularTrip/>
+                    <Footer/>
+                  
+              
                   </div>
                 </div>
-              }
-              // 다른페이지 이동 로직 (서버X)
-            ></Route>
-            <Route
-              path="/login/oauth2/callback/kakao"
-              element={<LoginHandler />}
-            />
-            <Route path="/signup1" element={<SignUpPage1 />}></Route>
-            <Route path="/signup2" element={<SignUpPage2 />}></Route>
-            <Route path="/signup3" element={<SignUpPage3 />}></Route>
-            <Route path="/login" element={<LoginPage />}></Route>
-            <Route path="/loginSuccess" element={<h1>로그인 성공</h1>}></Route>
-            <Route path="/loginFailure" element={<h1>로그인 실패</h1>}></Route>
-          </Routes>
-        </Wrapper>
- 
+              </div>
+            }
+            // 다른페이지 이동 로직 (서버X)
+          ></Route>
+          <Route
+            path="/login/oauth2/callback/kakao"
+            element={<LoginHandler />}
+          />
+          <Route path="/signup1" element={<SignUpPage1 />}></Route>
+          <Route path="/signup2" element={<SignUpPage2 />}></Route>
+          <Route path="/signup3" element={<SignUpPage3 />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/loginSuccess" element={<h1>로그인 성공</h1>}></Route>
+          <Route path="/loginFailure" element={<h1>로그인 실패</h1>}></Route>
+        </Routes>
+      </Wrapper>
     </div>
   );
 }
 //서버 통신X
 export function NavBar() {
   const location = useLocation(); // 현재 위치 추적
-  const [isScrolled, setIsScrolled] = useState(false);
-  const isMainPage = location.pathname === "/"; // 메인 페이지 여부 확인
   useEffect(() => {
     const handleScroll = () => {
-      // 스크롤 위치에 따라 isScrolled 상태 업데이트
+      console.log(window.scrollY);
       if (window.scrollY > 50) {
-        // 50px 이상 스크롤됐을 때 isScrolled를 true로 설정
+        console.log("Setting isScrolled to true");
         setIsScrolled(true);
       } else {
+        console.log("Setting isScrolled to false");
         setIsScrolled(false);
       }
     };
 
-    // scroll 이벤트 리스너 추가
     window.addEventListener("scroll", handleScroll);
 
     // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
-  // 스크롤 상태 및 현재 페이지에 따른 클래스 이름 결정
+  const [isScrolled, setIsScrolled] = useState(false);
+  const isMainPage = location.pathname === "/"; // 메인 페이지 여부 확인
   const topMenuClass = `topMenu ${isScrolled ? "scrolled" : ""}`;
+  // 스크롤 상태 및 현재 페이지에 따른 클래스 이름 결정
   const linkClass = `menuItem linkItem${isMainPage ? " mainPage" : ""}${
     isScrolled ? " scrolled" : ""
   }`;

@@ -11,7 +11,7 @@ function SignUpInput() {
     emailLocalPart: "",
     emailDomain: "",
   });
-
+  const [isIdChecked, setIsIdChecked] = useState(false); // 아이디 중복 검사 여부 상태
   const [errors, setErrors] = useState({});
   const [isIdValid, setIsIdValid] = useState(false);
 
@@ -28,6 +28,37 @@ function SignUpInput() {
       ...prevErrors,
       email: isValidEmail ? "" : "유효한 이메일 주소를 입력해주세요.",
     }));
+  };
+  const checkIdDuplication = async () => {
+    setIsIdChecked(false); // 중복 확인 전 상태를 초기화
+    try {
+      const response = await fetch("http://165.229.110.237:8080/api/id-check", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userid: formData.id }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        if (data.isAvailable) {
+          alert("사용 가능한 아이디입니다.");
+          setIsIdValid(true);
+          setIsIdChecked(true); // 아이디가 검사되었고 유효함
+        } else {
+          alert("이미 사용 중인 아이디입니다.");
+          setIsIdValid(false);
+          setIsIdChecked(true); // 아이디가 검사되었으나 유효하지 않음
+        }
+      } else {
+        throw new Error("아이디 중복 확인 실패");
+      }
+    } catch (error) {
+      console.error("아이디 중복 확인 요청 실패:", error);
+      alert(
+        "아이디 중복 확인 과정에서 오류가 발생했습니다. 다시 시도해주세요."
+      );
+    }
   };
 
   const validateEmailLocalPart = (emailLocalPart) => {
@@ -112,6 +143,16 @@ function SignUpInput() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isIdChecked) {
+      // 아이디 중복 검사를 하지 않았다면
+      alert("아이디 중복 검사를 해주세요.");
+      return;
+    }
+    if (!isFormValid()) {
+      // 폼 데이터 유효성 검사
+      alert("모든 필드를 올바르게 입력해주세요.");
+      return;
+    }
     if (!isFormValid()) {
       alert("모든 필드를 올바르게 입력해주세요.");
       return;
@@ -119,7 +160,7 @@ function SignUpInput() {
 
     const finalEmail = `${formData.emailLocalPart}${formData.emailDomain}`;
     try {
-      const response = await fetch("http://172.30.1.13:8080/api/signup", {
+      const response = await fetch("http://165.229.110.23:8080/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -150,6 +191,7 @@ function SignUpInput() {
 
   const isFormValid = () => {
     return (
+      isIdValid &&
       Object.values(formData).every((value) => value) &&
       Object.keys(errors).every((key) => !errors[key])
     );
@@ -185,7 +227,8 @@ function SignUpInput() {
             fontFamily: "Pretendard",
             fontWeight: "600",
           }}
-          disabled={!isIdValid}
+          disabled={!formData.id || formData.id.length < 6} // 아이디가 입력되지 않았거나, 6자 미만일 경우 버튼 비활성화
+          onClick={checkIdDuplication} // 여기에 이벤트 핸들러 추가
         >
           아이디 중복 확인하기
         </button>
@@ -275,11 +318,12 @@ function SignUpInput() {
         {errors.email && <p className="errorMessage">{errors.email}</p>}
         <button
           type="submit"
-          disabled={!isFormValid()}
+          disabled={!isFormValid() || !isIdChecked}
           className="btn_next"
           style={{
             marginTop: "10px",
-            backgroundColor: isFormValid() ? "#275EFE" : "#C2C2C2",
+            backgroundColor:
+              isFormValid() && isIdChecked ? "#275EFE" : "#C2C2C2",
           }}
         >
           가입완료
