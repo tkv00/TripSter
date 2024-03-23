@@ -5,6 +5,7 @@
   height: 6.9444vw;
   width: 100%;
   justify-content: center;
+  overflow: hidden; /* 넘치는 부분 숨기기 */
   border-top: solid 0.1vw #0038ff;
   border-bottom: solid 0.1vw #0038ff;
 }
@@ -36,9 +37,9 @@
 }
 
 .slide-track2 {
-  animation: scroll 20s linear infinite;
+  animation: scroll 40s linear infinite;
   display: flex;
-  width: calc(17.3611vw * 14);
+  width: calc((17.3611vw + 8.3333vw) * 12); /* 여기서 12는 원본 + 복제 슬라이드 총 개수 */
 }
 
 .slide2 {
@@ -58,14 +59,13 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-17.3611vw * 3));
+    transform: translateX(calc(-1 * (17.3611vw + 8.3333vw) * 6)); 
   }
 }
 
 .slide2 span {
   color: #0038ff;
   font-size: 2.6389vw;
-
   display: block;
   margin-left: 2.0833vw; /* 이미지와 텍스트 간 간격 */
 }

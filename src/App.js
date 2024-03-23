@@ -49,8 +49,6 @@ function App() {
   ];
   return (
     <div className="App">
-      <div className="logo">LOGO</div>
-
       {/* 상단 바 서버통신X */}
       <NavBar />
       <Wrapper>
@@ -73,8 +71,6 @@ function App() {
                     <ContainerBelt/>
                     <PopularTrip/>
                     <Footer/>
-                  
-              
                   </div>
                 </div>
               </div>

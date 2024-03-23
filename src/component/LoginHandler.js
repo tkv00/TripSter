@@ -19,7 +19,6 @@ const LoginHandler = () => {
         console.log(response);
         // 여기서 받은 데이터(예: 사용자 토큰)를 처리하고,
         // 필요한 경우 로컬 스토리지 등에 저장할 수 있습니다.
-        
         navigate("/loginSuccess"); // 로그인 성공 후 이동할 경로
       } catch (error) {
         console.error('로그인 실패:', error);

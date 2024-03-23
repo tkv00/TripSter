@@ -9,7 +9,8 @@ function TextInput() {
 function Input() {
   return (
     <div>
-      <h3 className="header-Name">당신을 위한 여행 계획 메이트</h3>
+      <h3 className="header-Name"
+      style={{fontFamily:"Pretendard"}}>당신을 위한 여행 계획 메이트</h3>
       <div
         className="input-container"
         style={{ display: "flex", alignItems: "center" }}

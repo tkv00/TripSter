@@ -1,6 +1,6 @@
 .header-Name{
   text-align: left;
-  font-size: 2.625 Rem;
+  font-size:max(1.8229vw,25px);
   font-weight: 700;
   color: white;
   padding-left: 4vw;
@@ -9,7 +9,7 @@
 
 
 .input-Text{
-  width: 716px;
+  width: max(400px,37.2917vw);
   margin-left: 4vw;
   border:none;
   text-align: left;

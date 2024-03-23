@@ -103,7 +103,7 @@
   position: relative;
   text-align: center;
   color: #3b3b3b;
-  font-size: 1.3021vw;
+  font-size: max(15px,1.3021vw);
   font-family: "Pretendard";
   font-weight: 500;
   padding-left: 4.1667vw;

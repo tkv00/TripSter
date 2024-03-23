@@ -32,23 +32,26 @@ function SignUpInput() {
   const checkIdDuplication = async () => {
     setIsIdChecked(false); // 중복 확인 전 상태를 초기화
     try {
-      const response = await fetch("http://165.229.110.237:8080/api/id-check", {
+      const response = await fetch("http://172.30.1.3:8080/api/id-check", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ userid: formData.id }),
       });
-      const data = await response.json();
+      const data = await response.json(); // 서버로부터 응답 받음
       if (response.ok) {
-        if (data.isAvailable) {
+        // 여기에서 서버 응답 처리 로직을 수정
+        if (data === true) {
+          // true: 아이디 중복 없음, 회원가입 가능
           alert("사용 가능한 아이디입니다.");
-          setIsIdValid(true);
-          setIsIdChecked(true); // 아이디가 검사되었고 유효함
+          setIsIdValid(true); // 아이디 유효 상태를 true로 설정
+          setIsIdChecked(true); // 아이디 중복 검사 완료 상태를 true로 설정
         } else {
+          // false: 아이디 중복 있음
           alert("이미 사용 중인 아이디입니다.");
-          setIsIdValid(false);
-          setIsIdChecked(true); // 아이디가 검사되었으나 유효하지 않음
+          setIsIdValid(false); // 아이디 유효 상태를 false로 설정
+          setIsIdChecked(true); // 아이디 중복 검사 완료 상태를 true로 설정, 중복된 아이디를 변경해야 함을 알림
         }
       } else {
         throw new Error("아이디 중복 확인 실패");
@@ -160,7 +163,7 @@ function SignUpInput() {
 
     const finalEmail = `${formData.emailLocalPart}${formData.emailDomain}`;
     try {
-      const response = await fetch("http://165.229.110.23:8080/api/signup", {
+      const response = await fetch("http://172.30.1.3:8080/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -192,6 +195,7 @@ function SignUpInput() {
   const isFormValid = () => {
     return (
       isIdValid &&
+      isIdChecked &&
       Object.values(formData).every((value) => value) &&
       Object.keys(errors).every((key) => !errors[key])
     );

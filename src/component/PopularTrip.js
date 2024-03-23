@@ -2,6 +2,9 @@ import "./containercenter.css";
 import img_busan from "../img/busan.png";
 import img_seoul from "../img/seoul.png";
 import img_jeju from "../img/jeju.png";
+
+
+
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import React, { useState, useEffect, useRef } from "react";
 function PopularTrip() {
