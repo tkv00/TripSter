@@ -24,6 +24,7 @@ import PlanBoard2 from "./component/PlanBoard2.js";
 import ContainerBelt from "./component/ContainerBelt.js";
 import PopularTrip from "./component/PopularTrip.js";
 import Footer from "./component/Footer.js";
+import MyTravelType from "./Page/MyTravelType.jsx";
 function App() {
   const slideData = [
     {
@@ -33,7 +34,7 @@ function App() {
     },
     {
       index: 1,
-      headline: "BUSAN",
+      headline: "BUsSAN",
       src: place1,
     },
     {
@@ -61,8 +62,6 @@ function App() {
                   <div className="contain">
                     {/* 홈페이지 전체 검색 */}
                     <TextInput />
-
-                    {/* 이미지 슬라이더 (서버통신x) */}
                     <Slider heading="Example Slider" slides={slideData} />
                     {/* component파일 -> Banner파일  이미지 4개를 가져오는데 공공데이터를 이용해서 이미지4개+장소명4개 통신 */}
                     <Banner />
@@ -87,6 +86,7 @@ function App() {
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/loginSuccess" element={<h1>로그인 성공</h1>}></Route>
           <Route path="/loginFailure" element={<h1>로그인 실패</h1>}></Route>
+          <Route path="/MyTravelType" element={<MyTravelType/>}></Route>
         </Routes>
       </Wrapper>
     </div>

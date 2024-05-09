@@ -1,4 +1,22 @@
 import "./containercenter.css";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import MbtiTicket from "../../src/img/ticket1.png";
+const MbtiCardContainer = styled.img`
+  width: 28.9464vw;
+  height: 39.8606vw;
+  left: 30%;
+  margin-top: 10%;
+  border-radius: 30px;
+  box-shadow: 0px 0px 28.7px -5px #d9d9d9;
+  position: relative; /* 추가된 속성 */
+  display: flex;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+    transition: transform 0.5s ease-in-out;
+  }
+`;
 function PlanBoard2() {
   return (
     <div className="planeContainer">
@@ -6,12 +24,15 @@ function PlanBoard2() {
         <div className="headerSection">
           <div className="headerFlexContainer">
             <div className="text unbounded-font" style={{ marginTop: "-30%" }}>
-              <div>WHAT'S</div>
+              <div>{`WHAT\'S`}</div>
               <div>MY TRAVEL TYPE?</div>
             </div>
             <MbtiCard />
           </div>
-          <div className="hrSvgContainer" style={{ marginRight: "25%",marginTop:"-40%" }}>
+          <div
+            className="hrSvgContainer"
+            style={{ marginRight: "25%", marginTop: "-40%" }}
+          >
             <hr
               style={{
                 border: "solid 1px #3B3B3B",
@@ -65,10 +86,14 @@ function PlanBoard2() {
 }
 
 function MbtiCard() {
+  const navigate = useNavigate();
+  const useNavigateToMyTravelType = () => {
+    navigate("/MyTravelType");
+  };
   return (
-    <div className="MbtiCardContainer">
-      <div>FIND TRAVEL TYPE</div>
-    </div>
+    <>
+      <MbtiCardContainer src={MbtiTicket} alt="" onClick={useNavigateToMyTravelType}></MbtiCardContainer>
+    </>
   );
 }
 export default PlanBoard2;

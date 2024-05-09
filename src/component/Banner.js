@@ -25,7 +25,7 @@ function Banner() {
       style={{ flexDirection: "column", marginLeft: "4.5%", marginTop: "20%" }}
     >
       <div className="banner-text" style={{ margin: "25px" }}>
-        Today's Trip Route
+        {`Today\'s Trip Route`}
       </div>
       <label
         style={{

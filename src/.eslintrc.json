@@ -3,7 +3,16 @@
   "parserOptions": {
     "requireConfigFile": false,
     "babelOptions": {
-      "configFile": "./src/.babelrc"
+      "presets": ["@babel/preset-env"]
+    }
+  },
+  
+  "extends": ["next","next/core-web-vitals"],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
+      }
     }
   }
 }
