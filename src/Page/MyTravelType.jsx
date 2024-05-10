@@ -30,7 +30,6 @@ const SubText = styled.p`
   }
 `;
 const MainContainer = styled.div`
-  
   position: relative;
   margin: 5% 7.5%;
   place-items: center;
@@ -120,6 +119,38 @@ const BallonText = styled.div`
   font-size: max(1.5vw, 10px);
   //margin-top: -0.5729vw;
 `;
+const CardDescription = styled.div`
+  font-size: 12px;
+  margin-top:30%;
+  padding: 10px;
+  text-align: center;
+  @media (max-width: 1400px) {
+    font-size: 10px;
+  }
+  @media (max-width: 1000px) {
+    display: none;
+  }
+`;
+const LocationBox = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 135px;
+  height: 33px;
+  border-radius: 20px;
+  align-items: center;
+  background-color: white;
+  color: #2d62f1;
+  text-align: center;
+  position: absolute;
+  font-weight: 700;
+  margin-top: 360px;
+  @media (max-width: 1400px) {
+    margin-top: 250px;
+  }
+  @media (max-width: 1000px) {
+    margin-top: 135px;
+  }
+`;
 function MyTravelType() {
   return (
     <>
@@ -138,6 +169,8 @@ function MyTravelType() {
             <Ballon>
               <BallonText>{item.mbti}</BallonText>
             </Ballon>
+            <CardDescription>{item.des}</CardDescription>
+            <LocationBox>{item.location}</LocationBox>
           </CardContainer>
         ))}
       </MainContainer>
